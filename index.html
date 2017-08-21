@@ -1,0 +1,50 @@
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style type="text/css">
+			#myCanvas{
+				font-family: 'gl-nummernschild-mtlmedium';
+			}
+		</style>
+	<title>Generador de patente Argentina</title>
+</head>
+
+<body>
+	<canvas id="myCanvas" width="800" height="257"/>
+</body>
+	<script type="text/javascript" charset="utf-8">
+
+	function makeid() {
+	  var text = "";
+	  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+	  for (var i = 0; i < 1; i++)
+	    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+	  return text;
+	}
+
+		var canvas = document.getElementById("myCanvas");
+		var ctx = canvas.getContext("2d");
+
+		var background = new Image();
+		background.src = "https://photos-5.dropbox.com/t/2/AAA1Zmrg5t-6AxFo5Nsdl8aa66ideVSrCHt83SQeYmMAZw/12/385868957/jpeg/32x32/3/1503374400/0/2/patente.jpg/EPORpYkDGOPoAyAHKAc/rLPWhSZ8WTp6yOqdk8xMeMa9H-DG-JilOiM6rJa5AqQ?dl=0&size=2048x1536&size_mode=3";
+		ctx.drawImage(background,0,0);   
+		ctx.font = "200px gl-nummernschild-mtl";
+		ctx.fillStyle = "black";
+		ctx.textAlign = "center";
+		var random1 = Math.floor((Math.random() * 9) + 1);
+		var random2 = Math.floor((Math.random() * 9) + 1);
+		var random3 = Math.floor((Math.random() * 9) + 1);
+		var lrandom1 = makeid();
+		var lrandom2 = makeid();
+		var lrandom3 = makeid();
+		var lrandom4 = makeid();
+		ctx.fillText(""+lrandom1+lrandom2+" "+random1+random2+random3+" "+lrandom3+lrandom4,400,215);
+
+		var button = document.getElementById('btn-download');
+		button.addEventListener('click', function (e) {
+		    var dataURL = canvas.toDataURL('image/png');
+		    button.href = dataURL;
+		});
+	</script>
+</html>
